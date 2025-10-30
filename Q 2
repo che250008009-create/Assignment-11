@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+struct Student{
+	string name;
+	int age;
+	char gender;
+	string branch;
+};
+using namespace std;
+int main(){
+	Student* ptr=(Student*)malloc(sizeof(Student)*100);
+	for (int i = 0; i < 100; i++) {
+        ptr[i].name = "Atharva";
+        ptr[i].age = 18;
+        ptr[i].gender = 'M';
+        ptr[i].branch = "CE";
+    }
+	ptr=(Student*)realloc(ptr,sizeof(Student)*200);
+	for (int i=100;i<200;i++){
+		ptr[i].name = "Deepak";
+        ptr[i].age = 19;
+        ptr[i].gender = 'M';
+        ptr[i].branch = "CHE";
+	}
+	for (int i=0;i<200;i++){
+		cout<< ptr[i].name<<"   "<<ptr[i].age<<"   "<<ptr[i].gender<<"   "<< ptr[i].branch<<endl;
+	}
+	free(ptr);
+}
